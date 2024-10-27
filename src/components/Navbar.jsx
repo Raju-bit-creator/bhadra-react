@@ -36,6 +36,8 @@ const Navbar = (props) => {
             </ul>
             <form className="d-flex">
              
+
+             
                 
             </form>
             <button className='btn btn-success' onClick={props.toggleMode}>{props.text}</button>
