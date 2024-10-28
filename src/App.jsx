@@ -52,7 +52,7 @@ function App() {
         <Alert alert={alert} showAlert={showAlert} />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/blogs' element={<Contact />} />
+            <Route path='/contact' element={<Contact />} />
             <Route path='/about' element={<About />} />
 
           </Routes>     

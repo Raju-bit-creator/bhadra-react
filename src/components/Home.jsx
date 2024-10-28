@@ -1,43 +1,47 @@
 import React, { useState } from 'react'
 
 const Home = () => {
-  const [text, setText] = useState("Enter your text here")
-  const handleUpperCase = () => {
+  const [text, setText]= useState("")
+
+  const handleUpperCase =()=>{
+    console.log("you clicked uppercase button");
     setText(text.toUpperCase())
+    
   }
-  const handleLowerCase = () => {
+  const handleLowerCase =()=>{
+    console.log("lower");
     setText(text.toLowerCase())
+    
   }
-  const clearText =()=>{
+  const clearTextArea=()=>{
     setText('')
   }
-  const handleChange = (e) => {
-    e.preventDefault()
-    setText(e.target.value)
 
+  const handleChange =(e)=>{
+   e.preventDefault()
+   setText(e.target.value)
   }
   return (
     <div>
-
       <div className="mb-3 container">
-        <label for="exampleFormControlTextarea1" className="form-label">Analyze your text</label>
-        <textarea className="form-control" value={text} name='text' onChange={handleChange} placeholder={text} id="exampleFormControlTextarea1" rows="5"></textarea>
-        <button className='btn btn-primary mt-3 mx-2' onClick={handleUpperCase}>Uppercase </button>
-        <button className='btn btn-primary mt-3 mx-2' onClick={handleLowerCase}>Lowercase </button>
-        <button className='btn btn-primary mt-3 mx-2' onClick={clearText}>Clear text</button>
+        <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
+        <textarea className="form-control" value={text} name={text} onChange={handleChange} placeholder={text} id="exampleFormControlTextarea1" rows="3"></textarea>
+        <button className='btn btn-primary mt-3 mx-2'onClick={handleUpperCase}>Uppercase</button>
+        <button className='btn btn-primary mt-3 mx-2'onClick={handleLowerCase}>Lowercase</button>
+        <button className='btn btn-primary mt-3 mx-2'onClick={clearTextArea}>clear</button>
       </div>
       <div className='container'>
-        <p>{text.split(' ').length} word and {text.length} character</p>
-        <p>{0.008 * text.split(' ').length} is your reading time</p>
-        <h2>Preview</h2>
-       {text.length>0?<p>{text}</p>:'No preview to display'}
-      </div>
+        <h4>Analyze your text</h4>
+        <p>{text.split(' ').length} words and {text.length} character</p>
+        <p>{0.008 * text.split(' ').length} average time to read</p>
+        <h4>preview text</h4>
 
+      <p>{text.length>0?text:"no preview to display"}</p>
+      </div>
+      
     </div>
   )
 }
 
 export default Home
 
-// assignment
-// copy and alert msg
