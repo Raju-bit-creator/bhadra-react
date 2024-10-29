@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Home = () => {
+const Home = (props) => {
   const [text, setText]= useState("")
 
   const handleUpperCase =()=>{
@@ -17,6 +17,40 @@ const Home = () => {
     setText('')
   }
 
+
+//   const handleCopy = () => {
+//     // if (checkEmptyText()) return
+//     navigator.clipboard.writeText(text);
+//     props.showAlert('success', 'Text copied to clipboard')
+// }
+
+// const handleCopy = () => {
+
+
+//   console.log("You clicked copy button")
+//   navigator.clipboard.writeText(text)
+//   alert("Text copied")
+
+// }
+// const handleCopy = () => {
+//   navigator.clipboard.writeText(text).then(() => {
+//    props.showAlert('success', 'Text copied');
+//   })
+// }
+// const handleCopy = () => {
+//   navigator.clipboard.writeText(text)
+// showAlert("text copied")
+// };
+const handleCopy = () => {
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      setText('')
+    props.showAlert("success", "text is copied")
+
+    })
+
+
+}
   const handleChange =(e)=>{
    e.preventDefault()
    setText(e.target.value)
@@ -29,6 +63,7 @@ const Home = () => {
         <button className='btn btn-primary mt-3 mx-2'onClick={handleUpperCase}>Uppercase</button>
         <button className='btn btn-primary mt-3 mx-2'onClick={handleLowerCase}>Lowercase</button>
         <button className='btn btn-primary mt-3 mx-2'onClick={clearTextArea}>clear</button>
+        <button className='btn btn-primary mt-3 mx-2'onClick={handleCopy}>copy</button>
       </div>
       <div className='container'>
         <h4>Analyze your text</h4>
@@ -44,4 +79,4 @@ const Home = () => {
 }
 
 export default Home
-
+// assignment copy, alert
