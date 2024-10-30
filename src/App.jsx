@@ -11,7 +11,8 @@ import {
 import Contact from './components/Contact';
 import About from './components/About';
 import Home from './components/Home';
-import Classes from './components/Classes';
+// import Classes from './components/Classes';
+import Func from './components/Func';
 
 function App() {
   // const [color, setColor] = useState("blue")
@@ -51,7 +52,8 @@ function App() {
       <Router>
         <Navbar title="this is header" mode={mode} text={text} toggleMode={toggleMode} />
         <Alert alert={alert} showAlert={showAlert} />
-        <Classes />
+        {/* <Classes /> */}
+        <Func />
           <Routes>
             <Route path='/' element={<Home showAlert={showAlert}  />} />
             <Route path='/contact' element={<Contact />} />
