@@ -11,7 +11,6 @@ import {
 import Contact from './components/Contact';
 import About from './components/About';
 import Home from './components/Home';
-// import Classes from './components/Classes';
 import Func from './components/Func';
 
 function App() {
@@ -52,7 +51,6 @@ function App() {
       <Router>
         <Navbar title="this is header" mode={mode} text={text} toggleMode={toggleMode} />
         <Alert alert={alert} showAlert={showAlert} />
-        {/* <Classes /> */}
         <Func />
           <Routes>
             <Route path='/' element={<Home showAlert={showAlert}  />} />
