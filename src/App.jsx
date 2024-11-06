@@ -54,15 +54,12 @@ function App() {
         <Navbar title="this is header" mode={mode} text={text} toggleMode={toggleMode} />
         <Alert alert={alert} showAlert={showAlert} />
         <Func />
-        <Counter />
-       
+        <Counter />       
           <Routes>
             <Route path='/' element={<Home showAlert={showAlert}  />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/about' element={<About />} />
-
           </Routes>     
-
       </Router>
     </>
   )
