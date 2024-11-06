@@ -12,6 +12,8 @@ import Contact from './components/Contact';
 import About from './components/About';
 import Home from './components/Home';
 import Func from './components/Func';
+import Counter from './components/Counter';
+
 
 function App() {
   // const [color, setColor] = useState("blue")
@@ -52,6 +54,8 @@ function App() {
         <Navbar title="this is header" mode={mode} text={text} toggleMode={toggleMode} />
         <Alert alert={alert} showAlert={showAlert} />
         <Func />
+        <Counter />
+       
           <Routes>
             <Route path='/' element={<Home showAlert={showAlert}  />} />
             <Route path='/contact' element={<Contact />} />
