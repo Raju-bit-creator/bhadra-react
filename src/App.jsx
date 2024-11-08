@@ -13,6 +13,8 @@ import About from './components/About';
 import Home from './components/Home';
 import Func from './components/Func';
 import Counter from './components/Counter';
+import ProductState from './context/ProductState';
+
 
 
 function App() {
@@ -50,17 +52,19 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Navbar title="this is header" mode={mode} text={text} toggleMode={toggleMode} />
-        <Alert alert={alert} showAlert={showAlert} />
-        <Func />
-        <Counter />       
+      <ProductState>
+        <Router>
+          <Navbar title="this is header" mode={mode} text={text} toggleMode={toggleMode} />
+          <Alert alert={alert} showAlert={showAlert} />
+          {/* <Func /> */}
+          {/* <Counter /> */}
           <Routes>
-            <Route path='/' element={<Home showAlert={showAlert}  />} />
+            <Route path='/' element={<Home showAlert={showAlert} />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/about' element={<About />} />
-          </Routes>     
-      </Router>
+          </Routes>
+        </Router>
+      </ProductState>
     </>
   )
 }
