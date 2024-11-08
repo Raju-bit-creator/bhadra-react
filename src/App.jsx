@@ -13,6 +13,9 @@ import About from './components/About';
 import Home from './components/Home';
 import Func from './components/Func';
 import Counter from './components/Counter';
+
+import User from './components/User';
+import UserList from './components/UserList';
 import ProductState from './context/ProductState';
 
 
@@ -62,6 +65,8 @@ function App() {
             <Route path='/' element={<Home showAlert={showAlert} />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/about' element={<About />} />
+            <Route path="/user/:userId/:userName" element={<User />} />
+            <Route path="/user" element={<UserList />} />
           </Routes>
         </Router>
       </ProductState>

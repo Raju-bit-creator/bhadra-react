@@ -14,7 +14,7 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">Home</Link> 
+                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About us</Link>
@@ -26,19 +26,22 @@ const Navbar = (props) => {
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a className="dropdown-item" href="#">Action</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><hr className="dropdown-divider"/></li>
+                  <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/contact">Contact Us</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/user">User</Link>
+              </li>
             </ul>
             <form className="d-flex">
-             
 
-             
-                
+
+
+
             </form>
             <button className='btn btn-success' onClick={props.toggleMode}>{props.text}</button>
           </div>
