@@ -1,5 +1,7 @@
 
-
+.news-header{
+  text-align: center;
+}
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
