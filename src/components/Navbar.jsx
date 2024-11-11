@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
 
+
   return (
     <div>
       <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
