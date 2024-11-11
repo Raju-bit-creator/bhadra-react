@@ -45,23 +45,12 @@ const ProductState = (props) => {
       "urlToImage": "https://www.reuters.com/resizer/v2/5IQVOBWCRJL6ZNG24KGNC7Y7CU.jpg?auth=a0f7a9a8d55983a20005b2de0f5d4ab62522ab47252580aad7a5e63160a23e3a&height=1005&width=1920&quality=80&smart=true",
       "publishedAt": "2024-11-09T07:01:00Z",
       "content": null
-    },
-    {
-      "source": {
-        "id": "reuters2",
-        "name": "Reuters2"
-      },
-      "author": "Reuters2",
-      "title": "At least 24 killed in Pakistan train station bomb blast, police say - Reuters",
-      "description": "At least 24 people were killed and more than 40 injured in a bomb blast at a railway station in Quetta in southwestern Pakistan on Saturday, police and other officials told Reuters.",
-      "url": "https://www.reuters.com/world/asia-pacific/least-4-killed-30-injured-train-station-blast-southwestern-pakistan-2024-11-09/",
-      "urlToImage": "https://www.reuters.com/resizer/v2/5IQVOBWCRJL6ZNG24KGNC7Y7CU.jpg?auth=a0f7a9a8d55983a20005b2de0f5d4ab62522ab47252580aad7a5e63160a23e3a&height=1005&width=1920&quality=80&smart=true",
-      "publishedAt": "2024-11-09T07:01:00Z",
-      "content": null
     }
+
   ]
   const [product, setProduct] = useState(p1)
   const [news, setNews] = useState(articles)
+  const [article, setArticle] = useState([])
 
 
 
@@ -73,9 +62,21 @@ const ProductState = (props) => {
       })
     }, 5000);
   }
+  const fetchApi =async()=>{
+    try {
+      const response = await fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=d125d26fbc6d49728775e0b977bddc5a")
+      if (!response.ok){
+        throw new Error("response not comming")
+      }
+      const data= await response.json()
+      setArticle(data.articles)
+    } catch (error) {
+      throw new Error("response not comming")
+    }
+  }
 
   return (
-    <ProductContext.Provider value={{ product, update , news }}>
+    <ProductContext.Provider value={{ product, update , news, article, fetchApi }}>
       {props.children}
     </ProductContext.Provider>
   )

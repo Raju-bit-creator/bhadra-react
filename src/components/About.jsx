@@ -1,16 +1,20 @@
 import React, { useContext, useEffect } from 'react'
 import productContext from '../context/productContext'
+import Mac from "../assets/images/mac.jpeg"
 
 const About = () => {
     const context = useContext(productContext)
-    const { product, update, news } = context
+    const { product, update, news , article ,fetchApi } = context
     console.log("this is my news ", news);
+    console.log("this is articles", article);
+    
 
 
 
 
     useEffect(() => {
         update()
+        fetchApi()
 
     }, [])
 
@@ -23,11 +27,11 @@ const About = () => {
                     <h4 className="news-header">
                         My News
                     </h4>
-                    {news && news.map((item) => {
+                    { article.slice(0,8).map((item) => {
                         return (
                             <div className='col-md-3'>
-                                <div key={item.source.id} className="card ">
-                                    <img src="..." className="card-img-top" alt="..." />
+                                <div key={item.id} className="card ">
+                                    <img src={Mac} className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <h5 className="card-title">{item.author}</h5>
                                         <p className="card-text">{item.description}</p>
