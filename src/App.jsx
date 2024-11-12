@@ -17,6 +17,8 @@ import Counter from './components/Counter';
 import User from './components/User';
 import UserList from './components/UserList';
 import ProductState from './context/ProductState';
+import Signup from './components/Signup';
+
 
 
 
@@ -67,6 +69,8 @@ function App() {
             <Route path='/about' element={<About />} />
             <Route path="/user/:userId/:userName" element={<User />} />
             <Route path="/user" element={<UserList />} />
+            <Route path="/signup" element={<Signup />} />
+         
           </Routes>
         </Router>
       </ProductState>

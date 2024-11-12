@@ -30,12 +30,12 @@ const About = () => {
                     { article.slice(0,8).map((item) => {
                         return (
                             <div className='col-md-3'>
-                                <div key={item.id} className="card ">
+                                <div key={item._id} className="card ">
                                     <img src={Mac} className="card-img-top" alt="..." />
                                     <div className="card-body">
-                                        <h5 className="card-title">{item.author}</h5>
-                                        <p className="card-text">{item.description}</p>
-                                        <a href={item.url} target="blank" className="btn btn-primary">Go somewhere</a>
+                                        <h5 className="card-title">{item.title}</h5>
+                                        {/* <p className="card-text">{item.description}</p>
+                                        <a href={item.url} target="blank" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
                             </div>
