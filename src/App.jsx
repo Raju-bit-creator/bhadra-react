@@ -11,13 +11,14 @@ import {
 import Contact from './components/Contact';
 import About from './components/About';
 import Home from './components/Home';
-import Func from './components/Func';
-import Counter from './components/Counter';
+
+import Counter from '../src/features/counter/Counter';
 
 import User from './components/User';
 import UserList from './components/UserList';
 import ProductState from './context/ProductState';
 import Signup from './components/Signup';
+import Login from './components/Login';
 
 
 
@@ -61,6 +62,7 @@ function App() {
         <Router>
           <Navbar title="this is header" mode={mode} text={text} toggleMode={toggleMode} />
           <Alert alert={alert} showAlert={showAlert} />
+          {/* <Counter /> */}
           {/* <Func /> */}
           {/* <Counter /> */}
           <Routes>
@@ -70,6 +72,7 @@ function App() {
             <Route path="/user/:userId/:userName" element={<User />} />
             <Route path="/user" element={<UserList />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
          
           </Routes>
         </Router>

@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-
+// const count = useSelector(s=>s.counter)
+// const count = useSelector((state) => state.counter.value)
 
   return (
     <div>
@@ -37,17 +39,15 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <Link className="nav-link" to="/signup">Signup</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">Login</Link>
+              </li>
           
               <li className="nav-item">
                 <Link className="nav-link" to="/user">User</Link>
               </li>
+              
             </ul>
-            <form className="d-flex">
-
-
-
-
-            </form>
             <button className='btn btn-success' onClick={props.toggleMode}>{props.text}</button>
           </div>
         </div>
