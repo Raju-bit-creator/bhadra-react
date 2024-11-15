@@ -1,10 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = (props) => {
-// const count = useSelector(s=>s.counter)
-// const count = useSelector((state) => state.counter.value)
+  // const count = useSelector(s=>s.counter)
+  // const count = useSelector((state) => state.counter.value)
 
   return (
     <div>
@@ -42,11 +42,23 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <Link className="nav-link" to="/login">Login</Link>
               </li>
-          
+
               <li className="nav-item">
                 <Link className="nav-link" to="/user">User</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link position-relative" to="#"><FaShoppingCart />
               
+                   
+                    <span class="position-absolute top-5 start-100 translate-middle badge  bg-danger">
+                      0
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                 
+                </Link>
+
+              </li>
+
             </ul>
             <button className='btn btn-success' onClick={props.toggleMode}>{props.text}</button>
           </div>

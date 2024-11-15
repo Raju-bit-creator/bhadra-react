@@ -60,7 +60,7 @@ function App() {
     <>
       <ProductState>
         <Router>
-          <Navbar title="this is header" mode={mode} text={text} toggleMode={toggleMode} />
+          <Navbar title="logo here" mode={mode} text={text} toggleMode={toggleMode} />
           <Alert alert={alert} showAlert={showAlert} />
           {/* <Counter /> */}
           {/* <Func /> */}

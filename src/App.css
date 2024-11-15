@@ -2,6 +2,10 @@
 .news-header{
   text-align: center;
 }
+.our-product-title{
+  padding: 30px;
+  text-align: center;
+}
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

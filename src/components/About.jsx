@@ -4,15 +4,16 @@ import Mac from "../assets/images/mac.jpeg"
 
 const About = () => {
     const context = useContext(productContext)
-    const { product, update, news , article ,fetchApi } = context
-    console.log("this is my news ", news);
-    console.log("this is articles", article);
+    const { product } = context
+    console.log("hello", product);
     
-    useEffect(() => {
-        update()
-        fetchApi()
 
-    }, [])
+    
+    // useEffect(() => {
+    //     update()
+    //     fetchApi()
+
+    // }, [])
 
     return (
         <>
@@ -20,18 +21,19 @@ const About = () => {
                 <div className="row">
                     {/* <h4> this is about us component. my product name is: {product.name} and price:{product.price}</h4> */}
 
-                    <h4 className="news-header">
-                        My News
+                    <h4 className="our-product-title">
+                        Our Product
                     </h4>
-                    { article.slice(0,8).map((item) => {
+                    { product.map((item) => {
                         return (
                             <div className='col-md-3'>
                                 <div key={item.id} className="card ">
                                     <img src={Mac} className="card-img-top" alt="..." />
                                     <div className="card-body">
-                                        <h5 className="card-title">{item.title}</h5>
+                                        <h5 className="card-title">{item.name}</h5>
                                         <p className="card-text">{item.description}</p>
-                                        <a href={item.url} target="blank" className="btn btn-primary">Go somewhere</a>
+                                        <p className="card-text">Rs. {item.price}</p>
+                                        <button className='btn btn-primary'>Add to cart</button>
                                     </div>
                                 </div>
                             </div>
