@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import ProductContext from './productContext'
+import { cartReducer } from './Reducer'
 
 const ProductState = (props) => {
   let p1 = {
@@ -25,7 +26,12 @@ const ProductState = (props) => {
   ]
   const [product, setProduct] = useState(prod)
   
-  // const [article, setArticle] = useState([])
+  const [state, dispatch] = useReducer(cartReducer,
+    {
+        products: product,
+        cart: []
+    }
+)
 
 
 
@@ -51,7 +57,7 @@ const ProductState = (props) => {
   // }
 
   return (
-    <ProductContext.Provider value={{ product }}>
+    <ProductContext.Provider value={{ state, dispatch, product }}>
       {props.children}
     </ProductContext.Provider>
   )

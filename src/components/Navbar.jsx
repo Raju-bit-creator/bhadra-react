@@ -48,8 +48,6 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link position-relative" to="#"><FaShoppingCart />
-              
-                   
                     <span class="position-absolute top-5 start-100 translate-middle badge  bg-danger">
                       0
                       <span class="visually-hidden">unread messages</span>
