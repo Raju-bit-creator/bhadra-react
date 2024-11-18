@@ -4,8 +4,8 @@ import Mac from "../assets/images/mac.jpeg"
 
 const About = () => {
     const context = useContext(productContext)
-    const { state: { cart }, dispatch, product } = context
-    console.log("thsi is cart",cart);
+    const { state: { cart}, dispatch, product } = context
+    console.log("this is cart",cart);
     
     console.log("hello", product);
 

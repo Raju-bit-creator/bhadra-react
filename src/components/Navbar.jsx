@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from "react-icons/fa";
+import productContext from '../context/productContext'
 
 const Navbar = (props) => {
-  // const count = useSelector(s=>s.counter)
-  // const count = useSelector((state) => state.counter.value)
+  const context = useContext(productContext)
+  const { state: { cart}} = context
+
 
   return (
     <div>
@@ -47,9 +49,9 @@ const Navbar = (props) => {
                 <Link className="nav-link" to="/user">User</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link position-relative" to="#"><FaShoppingCart />
+                <Link className="nav-link position-relative" to="./cartitem"><FaShoppingCart />
                     <span class="position-absolute top-5 start-100 translate-middle badge  bg-danger">
-                      0
+                      {cart.length}
                       <span class="visually-hidden">unread messages</span>
                     </span>
                  
