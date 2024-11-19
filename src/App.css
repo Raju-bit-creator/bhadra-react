@@ -1,4 +1,21 @@
-
+.cart-img{
+  width: 50px;
+  height: 50px;
+}
+.cart-page{
+  display: flex;
+ 
+}
+.filter-summary{
+  width: 30%;
+  background: #000;
+  color: #fff;
+  padding: 40px;
+  height: 100vh;
+}
+.productContainer-cart{
+  width: 70%;
+}
 .news-header{
   text-align: center;
 }
