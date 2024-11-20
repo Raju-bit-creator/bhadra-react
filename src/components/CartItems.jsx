@@ -6,9 +6,9 @@ import { MdDelete } from "react-icons/md";
 const CartItems = () => {
     const context = useContext(productContext)
     const { state: { cart }, dispatch } = context
-    const Total=cart.reduce((acc, curr)=> acc+ curr.price * curr.qty, 0)
-    console.log("cartPrice",Total)
-    
+    const Total = cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0)
+    console.log("cartPrice", Total)
+
     return (
         <div className='container cart-page '>
             <div className='productContainer-cart'>
@@ -28,7 +28,7 @@ const CartItems = () => {
                                 </div>
                                 <div className='col-md-2'>
                                     <select value={item.qty}
-                                        onClick={(e) =>
+                                        onChange={(e) =>
                                             dispatch({
                                                 type: "CHANGE_CART_QTY",
                                                 payload: {
@@ -41,6 +41,7 @@ const CartItems = () => {
                                             <option key={x + 1}>{x + 1}</option>
                                         ))}
                                     </select>
+                                 
                                 </div>
                                 <div className='col-md-2'>
                                     <button type='button' className='btn btn-light' onClick={() =>
