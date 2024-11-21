@@ -11,6 +11,7 @@
   "dependencies": {
     "backend": "file:",
     "express": "^4.21.1",
+    "mongoose": "^8.8.2",
     "nodemon": "^3.1.7"
   }
 }
