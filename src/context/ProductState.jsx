@@ -62,7 +62,18 @@ const ProductState = (props) => {
   //     throw new Error("response not comming")
   //   }
   // }
-
+//   const allProduct = async () => {
+//     const response = await fetch("http://localhost:5000/api/product/getallproducts", {
+//         method: "GET",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "auth-token": localStorage.getItem('token')
+//         }
+//     })
+//     let parseData = await response.json()
+//     console.log(parseData);
+//     setProduct(parseData)
+// }
   return (
     <ProductContext.Provider value={{ state, dispatch, product }}>
       {props.children}

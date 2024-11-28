@@ -1,21 +1,45 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import productContext from '../context/productContext'
 import Mac from "../assets/images/mac.jpeg"
+import { BsThreeDots } from "react-icons/bs";
+import EditProductModal from './EditProductModal';
 
 const About = () => {
     const context = useContext(productContext)
-    const { state: { cart}, dispatch, product } = context
-    console.log("this is cart",cart);
-    
-    console.log("hello", product);
+    const { state: { cart }, dispatch, product } = context
+
+
+    const [menuVisible, setMenuVisible] = useState(false)
+    const [modalVisible, setModalVisible] = useState(false)
+    const [selectedProduct, setSelectedProduct] = useState(null)
+
+
+    const toggleMenu = (id) => {
+        setMenuVisible(prevState => ({
+            ...prevState,
+            [id]: !prevState[id]
+        }))
+    }
+
+    const openEditModal = (product) => {
+        setSelectedProduct(product)
+        setModalVisible(true)
+    }
+    const closeEditModal = () => {
+        setModalVisible(false);
+        setSelectedProduct(null);
+    };
+    const saveEdit = (updateData) => {
+        editProduct(selectedProduct._id, updateData)
+    }
+    const handleDelete = async () => {
+        console.log("deleting product");
+        // await deleteProduct(id)
+
+    }
 
 
 
-    // useEffect(() => {
-    //     update()
-    //     fetchApi()
-
-    // }, [])
 
     return (
         <>
@@ -29,14 +53,23 @@ const About = () => {
                     {product.map((item) => {
                         return (
                             <div className='col-md-3'>
-                                <div key={item.id} className="card ">
+                                <div key={item._id} className="card ">
                                     <img src={Mac} className="card-img-top" alt="..." />
                                     <div className="card-body">
-                                        <h5 className="card-title">{item.name}</h5>
+                                        <div className='three-dots'>
+                                            <h5 className="card-title">{item.name}</h5>
+                                            <BsThreeDots onClick={() => toggleMenu(item.id)} />
+                                            {menuVisible[item.id] && (
+                                                <div className='menu-options'>
+                                                    <button onClick={() => openEditModal(item)}>Edit</button>
+                                                    <button onClick={() => handleDelete(item.id)}>Delete</button>
+                                                </div>
+                                            )}
+                                        </div>
                                         <p className="card-text">{item.description}</p>
                                         <p className="card-text">Rs. {item.price}</p>
                                         {/* <button className='btn btn-primary'>Add to cart</button> */}
-                                        {cart && cart.some(p => p.id === item.id) ? (
+                                        {cart && cart.some(p => p.id === item._id) ? (
                                             <button
                                                 className='btn btn-danger'
                                                 onClick={() => {
@@ -63,6 +96,14 @@ const About = () => {
                                         )}
                                     </div>
                                 </div>
+                                {modalVisible && selectedProduct && selectedProduct.id === item.id && (
+                                    <EditProductModal
+                                        product={selectedProduct}
+                                        onClose={closeEditModal}
+                                        onSave={saveEdit}
+
+                                    />
+                                )}
                             </div>
                         )
 

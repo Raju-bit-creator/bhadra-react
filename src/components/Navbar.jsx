@@ -36,7 +36,7 @@ const Navbar = (props) => {
                 </ul>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/contact">Contact Us</Link>
+                <Link className="nav-link" to="/editmodal">modal</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/signup">Signup</Link>

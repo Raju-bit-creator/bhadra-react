@@ -24,6 +24,7 @@ import CartItems from './components/CartItems';
 
 
 
+
 function App() {
   // const [color, setColor] = useState("blue")
   const [mode, setMode] = useState('light')
@@ -75,6 +76,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cartitem" element={<CartItems/>} />
+            
          
           </Routes>
         </Router>
