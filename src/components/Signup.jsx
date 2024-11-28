@@ -9,6 +9,7 @@ const Signup = () => {
         email:"",
         password:"",
         cpassword:""
+        
     })
     const handleSubmit = async (e) => {
         e.preventDefault();
