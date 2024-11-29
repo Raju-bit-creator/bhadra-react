@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import productContext from '../context/productContext'
 import Mac from "../assets/images/mac.jpeg"
 import { BsThreeDots } from "react-icons/bs";
@@ -6,8 +6,9 @@ import EditProductModal from './EditProductModal';
 
 const About = () => {
     const context = useContext(productContext)
-    const { state: { cart }, dispatch, product } = context
-
+    const { state: { cart }, dispatch, product, editProduct, allProduct } = context 
+    console.log("product1111", product);
+    
 
     const [menuVisible, setMenuVisible] = useState(false)
     const [modalVisible, setModalVisible] = useState(false)
@@ -37,7 +38,9 @@ const About = () => {
         // await deleteProduct(id)
 
     }
-
+    useEffect(() => {
+        allProduct()
+    }, [])
 
 
 
@@ -69,7 +72,7 @@ const About = () => {
                                         <p className="card-text">{item.description}</p>
                                         <p className="card-text">Rs. {item.price}</p>
                                         {/* <button className='btn btn-primary'>Add to cart</button> */}
-                                        {cart && cart.some(p => p.id === item._id) ? (
+                                        {cart && cart.some(p => p.id === item.id) ? (
                                             <button
                                                 className='btn btn-danger'
                                                 onClick={() => {

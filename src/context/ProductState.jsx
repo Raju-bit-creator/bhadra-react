@@ -62,20 +62,38 @@ const ProductState = (props) => {
   //     throw new Error("response not comming")
   //   }
   // }
-//   const allProduct = async () => {
-//     const response = await fetch("http://localhost:5000/api/product/getallproducts", {
-//         method: "GET",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "auth-token": localStorage.getItem('token')
-//         }
-//     })
-//     let parseData = await response.json()
-//     console.log(parseData);
-//     setProduct(parseData)
-// }
+  const allProduct = async () => {
+    const response = await fetch("http://localhost:5000/api/product/getallproducts", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem('token')
+        }
+    })
+    let parseData = await response.json()
+    console.log(parseData);
+    setProduct(parseData)
+}
+const editProduct = async ( selectedProduct, updateData) => {
+  // console.log("editing product is", selectedProduct);
+   
+
+  // const {title, description, price, instock}= updateData
+  
+  // const response = await fetch("http://localhost:5000/api/product/updateproduct/", {
+  //     method: "PUT",
+  //     headers: {
+  //         "Content-Type": "application/json",
+  //         "auth-token": localStorage.getItem('token')
+  //     }
+  // })
+  // let parseData = await response.json()
+  // console.log(parseData);
+  // setProduct(parseData)
+}
+ 
   return (
-    <ProductContext.Provider value={{ state, dispatch, product }}>
+    <ProductContext.Provider value={{ state, allProduct, editProduct, dispatch, product }}>
       {props.children}
     </ProductContext.Provider>
   )

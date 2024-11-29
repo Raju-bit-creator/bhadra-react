@@ -32,7 +32,7 @@ const Signup = () => {
         
         console.log('this is response ', json);
         if (json) {
-            localStorage.setItem('token1', json.authToken)
+            localStorage.setItem('token', json.authToken)
             navigate('/login')
         }       
     };

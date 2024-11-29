@@ -34,7 +34,7 @@ const Login = () => {
             localStorage.setItem('token', json.authToken)
             navigate('/')
 
-        }
+        } 
     };
     const onChange = (e) => {
         setCredential({ ...credential, [e.target.name]: e.target.value })
