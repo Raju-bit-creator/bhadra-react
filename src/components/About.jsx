@@ -6,7 +6,7 @@ import EditProductModal from './EditProductModal';
 
 const About = () => {
     const context = useContext(productContext)
-    const { state: { cart }, dispatch, product, editProduct, allProduct } = context 
+    const { state: { cart }, dispatch, product, editProduct } = context 
     console.log("product1111", product);
     
 
@@ -38,9 +38,9 @@ const About = () => {
         // await deleteProduct(id)
 
     }
-    useEffect(() => {
-        allProduct()
-    }, [])
+    // useEffect(() => {
+    //     allProduct()
+    // }, [])
 
 
 

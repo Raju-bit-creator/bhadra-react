@@ -50,18 +50,7 @@ const ProductState = (props) => {
       })
     }, 5000);
   }
-  // const fetchApi =async()=>{
-  //   try {
-  //     const response = await fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=d125d26fbc6d49728775e0b977bddc5a")
-  //     if (!response.ok){
-  //       throw new Error("response not comming")
-  //     }
-  //     const data= await response.json()
-  //     setArticle(data.articles)
-  //   } catch (error) {
-  //     throw new Error("response not comming")
-  //   }
-  // }
+ 
   const allProduct = async () => {
     const response = await fetch("http://localhost:5000/api/product/getallproducts", {
         method: "GET",
@@ -74,26 +63,55 @@ const ProductState = (props) => {
     console.log(parseData);
     setProduct(parseData)
 }
-const editProduct = async ( selectedProduct, updateData) => {
-  // console.log("editing product is", selectedProduct);
-   
 
-  // const {title, description, price, instock}= updateData
-  
-  // const response = await fetch("http://localhost:5000/api/product/updateproduct/", {
-  //     method: "PUT",
-  //     headers: {
-  //         "Content-Type": "application/json",
-  //         "auth-token": localStorage.getItem('token')
-  //     }
-  // })
-  // let parseData = await response.json()
-  // console.log(parseData);
-  // setProduct(parseData)
+const editProduct = async (selectedProduct, updateData) => {
+  console.log("edditing product with selected product", selectedProduct);
+  const { title, description, price, instock } = updateData
+  try {
+      const response = await fetch(`http://localhost:5000/api/product/updateproduct/${selectedProduct}`, {
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json',
+              'auth-token': localStorage.getItem('token')
+          },
+          body: JSON.stringify({ title, description, instock, price })
+      })
+      if (!response.ok) {
+          throw new Error('fail to update product')
+      }
+      const json = await response.json();
+      console.log("product updated successfully" ,json);
+      allProduct();
+
+  } catch (error) {
+      throw new Error('fail to update product')
+  }
+}
+
+const deleteProduct = async(id)=>{
+  try {
+      const response= await fetch(`http://localhost:5000/api/product/deleteproduct/${id}`,{
+          method: 'DELETE',
+          headers: {
+              "Content-Type":"application/json",
+              "auth-token": localStorage.getItem('token')
+          }
+      })
+      if(response.ok){
+          console.log("product deleted successfully");
+          allProduct()
+          
+      }
+      else{
+          console.error("failed to delete the product item")
+      }
+  } catch (error) {
+      console.error("internal server error")
+  }
 }
  
   return (
-    <ProductContext.Provider value={{ state, allProduct, editProduct, dispatch, product }}>
+    <ProductContext.Provider value={{ state, editProduct, dispatch, product }}>
       {props.children}
     </ProductContext.Provider>
   )

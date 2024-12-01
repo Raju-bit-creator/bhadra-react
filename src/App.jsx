@@ -20,6 +20,7 @@ import ProductState from './context/ProductState';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import CartItems from './components/CartItems';
+import Addproduct from './components/AddProduct';
 
 
 
@@ -76,6 +77,9 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cartitem" element={<CartItems/>} />
+            <Route path="/addproduct" element={<Addproduct showAlert={showAlert}/>} />
+            
+
             
          
           </Routes>
