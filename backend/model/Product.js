@@ -1,28 +1,29 @@
-const mongoose = require('mongoose')
-const {schema}= mongoose
 
-const productSchema =mongoose.Schema({
+const mongoose = require('mongoose')
+const { Schema } = mongoose
+
+const productSchema = new Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
     title: {
-        type:String,
+        type: String,
         required: true
     },
-    descpiption: {
-        type:String,
+    description: {
+        type: String,
         required: true
     },
     price: {
-        type:Number,
+        type: Number,
         required: true
     },
     instock: {
-        type:Number,
+        type: Number,
         required: true
     },
-    images:{
+    images: {
         type: [String],
         required: false
     },
@@ -31,5 +32,5 @@ const productSchema =mongoose.Schema({
         default: Date.now
     }
 })
-const Product= mongoose.model('product',productSchema) 
+const Product = mongoose.model('product', productSchema)
 module.exports = Product
