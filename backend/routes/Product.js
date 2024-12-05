@@ -60,4 +60,21 @@ router.post('/addproduct', fetchUser,
         }
     })
 
+    // deleting product
+  router.delete('/deleteproduct/:id', fetchUser, async(req, res)=>{
+    try {
+        let product = await Product.findById(req.params.id)
+        if(!product){
+            return res.status(404).send('product not found') 
+        }
+        if (product.user.toString() !== req.user.id){
+            return res.status(401).send('not allowed') 
+        }
+        product= await Product.findByIdAndDelete(req.params.id)
+        res.json({"success":"product has been delete", product: product})
+    } catch (error) {
+        res.status(500).send("internal server error")
+    }
+  })
+
 module.exports = router
