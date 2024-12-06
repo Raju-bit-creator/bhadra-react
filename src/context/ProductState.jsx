@@ -31,7 +31,7 @@ const ProductState = (props) => {
       "instock": 5
     }
   ]
-  const [product, setProduct] = useState(prod)
+  const [product, setProduct] = useState([])
   
   const [state, dispatch] = useReducer(cartReducer, 
     {
@@ -42,17 +42,17 @@ const ProductState = (props) => {
 
 
 
-  const update = () => {
-    setTimeout(() => {
-      setProduct({
-        name: "orange",
-        price: 50
-      })
-    }, 5000);
-  }
+  // const update = () => {
+  //   setTimeout(() => {
+  //     setProduct({
+  //       name: "orange",
+  //       price: 50
+  //     })
+  //   }, 5000);
+  // }
  
   const allProduct = async () => {
-    const response = await fetch("http://localhost:5000/api/product/getallproducts", {
+    const response = await fetch("http://localhost:5000/api/product/getallproduct", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -111,7 +111,7 @@ const deleteProduct = async(id)=>{
 }
  
   return (
-    <ProductContext.Provider value={{ state, editProduct, dispatch, product }}>
+    <ProductContext.Provider value={{ state, allProduct, editProduct, dispatch, product }}>
       {props.children}
     </ProductContext.Provider>
   )

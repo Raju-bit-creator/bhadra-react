@@ -6,7 +6,7 @@ import EditProductModal from './EditProductModal';
 
 const About = () => {
     const context = useContext(productContext)
-    const { state: { cart }, dispatch, product, editProduct } = context 
+    const { state: { cart }, dispatch, product, allProduct, editProduct } = context 
     console.log("product1111", product);
     
 
@@ -38,9 +38,9 @@ const About = () => {
         // await deleteProduct(id)
 
     }
-    // useEffect(() => {
-    //     allProduct()
-    // }, [])
+    useEffect(() => {
+        allProduct()
+    }, [])
 
 
 
@@ -57,22 +57,22 @@ const About = () => {
                         return (
                             <div className='col-md-3'>
                                 <div key={item._id} className="card ">
-                                    <img src={Mac} className="card-img-top" alt="..." />
+                                    <img src={`http://localhost:5000/uploads/${item.images[0]}`} className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <div className='three-dots'>
-                                            <h5 className="card-title">{item.name}</h5>
-                                            <BsThreeDots onClick={() => toggleMenu(item.id)} />
-                                            {menuVisible[item.id] && (
+                                            <h5 className="card-title">{item.title}</h5>
+                                            <BsThreeDots onClick={() => toggleMenu(item._id)} />
+                                            {menuVisible[item._id] && (
                                                 <div className='menu-options'>
                                                     <button onClick={() => openEditModal(item)}>Edit</button>
-                                                    <button onClick={() => handleDelete(item.id)}>Delete</button>
+                                                    <button onClick={() => handleDelete(item._id)}>Delete</button>
                                                 </div>
                                             )}
                                         </div>
                                         <p className="card-text">{item.description}</p>
                                         <p className="card-text">Rs. {item.price}</p>
                                         {/* <button className='btn btn-primary'>Add to cart</button> */}
-                                        {cart && cart.some(p => p.id === item.id) ? (
+                                        {cart && cart.some(p => p._id === item._id) ? (
                                             <button
                                                 className='btn btn-danger'
                                                 onClick={() => {
@@ -99,7 +99,7 @@ const About = () => {
                                         )}
                                     </div>
                                 </div>
-                                {modalVisible && selectedProduct && selectedProduct.id === item.id && (
+                                {modalVisible && selectedProduct && selectedProduct._id === item._id && (
                                     <EditProductModal
                                         product={selectedProduct}
                                         onClose={closeEditModal}

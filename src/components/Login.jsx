@@ -10,31 +10,39 @@ const Login = () => {
         password: ""
 
     })
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { email, password } = credential
-        const response = await fetch("http://localhost:5000/api/auth/login", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-
-        });
-        const json = await response.json()
-        setCredential({
-
-            email: "",
-            password: "",
-
-        })
-
-        console.log('this is response ', json);
-        if (json.success) {
-            localStorage.setItem('token', json.authToken)
-            navigate('/')
-
-        } 
+        const { email, password } = credential;
+    
+        if (!email || !password) {
+            alert("Email and password are required.");
+            return;
+        }
+    
+        try {
+            const response = await fetch("http://localhost:5000/api/auth/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+    
+            console.log("Response status:", response.status);
+            const json = await response.json();
+            console.log("Response JSON:", json);
+    
+            if (response.ok) {
+                localStorage.setItem('token', json.authToken);
+                navigate('/');
+            } else {
+                alert(json.message || "Login failed. Please check your credentials.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred while logging in.");
+        }
     };
     const onChange = (e) => {
         setCredential({ ...credential, [e.target.name]: e.target.value })

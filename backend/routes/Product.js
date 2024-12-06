@@ -19,14 +19,18 @@ router.post('/addproduct', fetchUser,
     async (req, res) => {
         try {
          const {title, description, price, instock}= req.body;
-        //  console.log("this is my product", req.body);
+         console.log("this is my product", req.body);
          const error = validationResult(req);
          if (!error.isEmpty()) {
              return res.status(400).json({ error: error.array() })
          }
 
+         let images= req.files.map(el=>{
+            return el.filename
+         })
+
          const product= new Product({
-            title, description, price, instock, user: req.user.id
+            title, description, price, instock, images, user: req.user.id
          })
          const saveProduct= await product.save()
          res.json(saveProduct)
