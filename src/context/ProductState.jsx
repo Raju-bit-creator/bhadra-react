@@ -111,7 +111,7 @@ const deleteProduct = async(id)=>{
 }
  
   return (
-    <ProductContext.Provider value={{ state, allProduct, editProduct, dispatch, product }}>
+    <ProductContext.Provider value={{ state, allProduct, editProduct, deleteProduct, dispatch, product }}>
       {props.children}
     </ProductContext.Provider>
   )

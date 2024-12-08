@@ -71,7 +71,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home showAlert={showAlert} />} />
             <Route path='/contact' element={<Contact />} />
-            <Route path='/about' element={<About />} />
+            <Route path='/profile' element={<About />} />
             <Route path="/user/:userId/:userName" element={<User />} />
             <Route path="/user" element={<UserList />} />
             <Route path="/signup" element={<Signup />} />

@@ -6,7 +6,7 @@ import EditProductModal from './EditProductModal';
 
 const About = () => {
     const context = useContext(productContext)
-    const { state: { cart }, dispatch, product, allProduct, editProduct } = context 
+    const { state: { cart }, dispatch, product, allProduct,deleteProduct, editProduct } = context 
     console.log("product1111", product);
     
 
@@ -33,9 +33,9 @@ const About = () => {
     const saveEdit = (updateData) => {
         editProduct(selectedProduct._id, updateData)
     }
-    const handleDelete = async () => {
+    const handleDelete = async (id) => {
         console.log("deleting product");
-        // await deleteProduct(id)
+        await deleteProduct(id)
 
     }
     useEffect(() => {
@@ -51,7 +51,7 @@ const About = () => {
                     {/* <h4> this is about us component. my product name is: {product.name} and price:{product.price}</h4> */}
 
                     <h4 className="our-product-title">
-                        Our Product
+                        My Product
                     </h4>
                     {product.map((item) => {
                         return (
