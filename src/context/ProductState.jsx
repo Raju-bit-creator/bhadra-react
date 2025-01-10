@@ -32,6 +32,7 @@ const ProductState = (props) => {
     }
   ]
   const [product, setProduct] = useState([])
+  const [profileProducts, setProfileProducts] = useState([])
   
   const [state, dispatch] = useReducer(cartReducer, 
     {
@@ -50,9 +51,23 @@ const ProductState = (props) => {
   //     })
   //   }, 5000);
   // }
+  
+  const profileProduct = async () => {
+    const response = await fetch(`http://localhost:5000/api/product/getprofileproduct`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem('token')
+        }
+    })
+    let parseData = await response.json()
+    console.log(parseData);
+    setProfileProducts(parseData)
+}
+
  
-  const allProduct = async () => {
-    const response = await fetch("http://localhost:5000/api/product/getallproduct", {
+  const allProduct = async (searchQuery='') => {
+    const response = await fetch(`http://localhost:5000/api/product/getallproduct?searchQuery=${searchQuery}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -111,7 +126,7 @@ const deleteProduct = async(id)=>{
 }
  
   return (
-    <ProductContext.Provider value={{ state, allProduct, editProduct, deleteProduct, dispatch, product }}>
+    <ProductContext.Provider value={{ state, allProduct, editProduct, deleteProduct,profileProduct, dispatch,profileProduct, product }}>
       {props.children}
     </ProductContext.Provider>
   )

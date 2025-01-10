@@ -4,9 +4,23 @@ const { body, validationResult } = require('express-validator')
 const fetchUser = require('../middleware/Fetchuser')
 
 const router = express.Router()
-router.get('/getallproduct', fetchUser, async (req, res) => {
+router.get('/getprofileproduct', fetchUser, async (req, res) => {
     try {
         const products = await Product.find({ user: req.user.id })
+        res.json(products)
+    } catch (error) {
+        res.status(500).send("internal server error")
+    }
+})
+router.get('/getallproduct', fetchUser, async (req, res) => {
+    try {
+        const searchQuery = req.query.searchQuery ? {
+            title :{
+                $regex: req.query.searchQuery,
+                $options: 'i'
+            }
+        } :{}
+        const products = await Product.find({ ...searchQuery})
         res.json(products)
     } catch (error) {
         res.status(500).send("internal server error")

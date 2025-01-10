@@ -5,9 +5,10 @@ import { BsThreeDots } from "react-icons/bs";
 import EditProductModal from './EditProductModal';
 import { useParams } from 'react-router-dom';
 
-const About = () => {
+
+const Searchresult = () => {
     const context = useContext(productContext)
-    const { state: { cart }, dispatch, product, allProduct,profileProduct,deleteProduct, editProduct } = context 
+    const { state: { cart }, dispatch, product, allProduct,deleteProduct, editProduct } = context 
     console.log("product1111", product);
     const params= useParams()
 
@@ -44,8 +45,6 @@ const About = () => {
     }
     useEffect(() => {
         allProduct(searchQuery)
-        profileProduct()
-
     }, [searchQuery])
 
 
@@ -57,7 +56,7 @@ const About = () => {
                     {/* <h4> this is about us component. my product name is: {product.name} and price:{product.price}</h4> */}
 
                     <h4 className="our-product-title">
-                        My Product
+                        Search Product
                     </h4>
                     {product.map((item) => {
                         return (
@@ -65,16 +64,7 @@ const About = () => {
                                 <div key={item._id} className="card ">
                                     <img src={`http://localhost:5000/uploads/${item.images[0]}`} className="card-img-top" alt="..." />
                                     <div className="card-body">
-                                        <div className='three-dots'>
-                                            <h5 className="card-title">{item.title}</h5>
-                                            <BsThreeDots onClick={() => toggleMenu(item._id)} />
-                                            {menuVisible[item._id] && (
-                                                <div className='menu-options'>
-                                                    <button onClick={() => openEditModal(item)}>Edit</button>
-                                                    <button onClick={() => handleDelete(item._id)}>Delete</button>
-                                                </div>
-                                            )}
-                                        </div>
+                                        <b>{item.title}</b>
                                         <p className="card-text">{item.description}</p>
                                         <p className="card-text">Rs. {item.price}</p>
                                         {/* <button className='btn btn-primary'>Add to cart</button> */}
@@ -124,6 +114,4 @@ const About = () => {
     )
 }
 
-export default About
-
-
+export default Searchresult

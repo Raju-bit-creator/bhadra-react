@@ -1,11 +1,29 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from "react-icons/fa";
 import productContext from '../context/productContext'
 
+
 const Navbar = (props) => {
-  const context = useContext(productContext)
-  const { state: { cart}} = context
+  const [searchQuery, setSearchQuery] = useState(""); // State for search input
+  const context = useContext(productContext);
+  const { state: { cart } } = context;
+  const navigate= useNavigate()
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value); // Update the search query state
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault(); // Prevent page reload
+    console.log("Searching for:", searchQuery);
+    if (searchQuery.trim()) {
+      navigate(`/search/${searchQuery}`)
+    }else{
+      navigate('/')
+    }
+
+  };
 
 
   return (
@@ -50,16 +68,27 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link position-relative" to="./cartitem"><FaShoppingCart />
-                    <span class="position-absolute top-5 start-100 translate-middle badge  bg-danger">
-                      {cart.length}
-                      <span class="visually-hidden">unread messages</span>
-                    </span>
-                 
+                  <span class="position-absolute top-5 start-100 translate-middle badge  bg-danger">
+                    {cart.length}
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+
                 </Link>
 
               </li>
 
             </ul>
+            <form className="d-flex" onSubmit={handleSearchSubmit}>
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                value={searchQuery}
+                onChange={handleSearchChange} // Update state on input change
+              />
+              <button className="btn btn-outline-success" type="submit">Search</button>
+            </form>
             <button className='btn btn-success' onClick={props.toggleMode}>{props.text}</button>
           </div>
         </div>
