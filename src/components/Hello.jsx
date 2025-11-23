@@ -9,7 +9,7 @@ const Hello = () => {
 
     }
 
-console.log("hello component rendered");
+Number.log("hello component rendered");
 
   return (
     <div>
