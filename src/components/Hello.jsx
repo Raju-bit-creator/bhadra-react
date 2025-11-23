@@ -9,7 +9,7 @@ const Hello = () => {
 
     }
 
-Number.log("hello component rendered");
+xyz.log("hello component rendered");
 
   return (
     <div>
