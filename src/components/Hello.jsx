@@ -9,7 +9,7 @@ const Hello = () => {
 
     }
 
-consoie.log("hello component rendered");
+console.log("hello component rendered");
 
   return (
     <div>
